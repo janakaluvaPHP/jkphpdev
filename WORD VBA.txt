@@ -49,3 +49,56 @@ tbl.Cell(1, 1).Shading.BackgroundPatternColor = wdColorWhite
 tbl.Cell(2, 2).Shading.BackgroundPatternColor = wdColorYellow
 
 End Sub
+
+Private Sub CommandButton1_Click()
+    Dim excelApp As Object
+    Set excelApp = CreateObject("Excel.Application")
+    
+    
+    Dim row As Integer
+    Dim id As String
+    Dim name As String
+    Dim price As Double
+    Dim quantity As Integer
+    Dim descriptio As String
+    
+    
+    For row = 1 To ActiveDocument.Tables(1).Rows.Count
+        
+        
+        id = excelApp.worksheetfunction.clean(ActiveDocument.Tables(1).Rows(row).Range.Text)
+        Debug.Print ("id: " + id)
+        Debug.Print ("-----------------")
+        
+'        clval = excelApp.worksheetfunction.clean(ActiveDocument.Tables(1).Cell(1, 1).Range.Text)
+        clval = excelApp.worksheetfunction.clean(ActiveDocument.Tables(1).Cell(row, 3).Range.Text)
+        Debug.Print (clval)
+    Next row
+    
+    
+    For row = 1 To ActiveDocument.Tables(2).Rows.Count
+        
+        
+        id = excelApp.worksheetfunction.clean(ActiveDocument.Tables(2).Rows(row).Range.Text)
+        Debug.Print ("id: " + id)
+        Debug.Print ("-----------------")
+        
+'        clval = excelApp.worksheetfunction.clean(ActiveDocument.Tables(1).Cell(1, 1).Range.Text)
+        clval = excelApp.worksheetfunction.clean(ActiveDocument.Tables(2).Cell(row, 3).Range.Text)
+        Debug.Print (clval)
+    Next row
+    
+
+End Sub
+
+Private Sub CommandButton2_Click()
+Dim tbl As Table
+Set tbl = ActiveDocument.Tables(1)
+tbl.Cell(1, 1).Shading.BackgroundPatternColor = wdColorDarkRed
+tbl.Cell(2, 2).Shading.BackgroundPatternColor = wdColorWhite
+
+tbl.Cell(1, 1).Shading.BackgroundPatternColor = wdColorWhite
+tbl.Cell(2, 2).Shading.BackgroundPatternColor = wdColorYellow
+
+End Sub
+
