@@ -14,7 +14,7 @@
       {
         $.ajax({
           type: "POST",
-          url: "post.php",
+          url: "post2.php",
           data: dataString,
           success: function (data) {
             $('.success').fadeIn(200).show();
@@ -23,28 +23,16 @@
           }
         });
       }
-      event.preventDefault();
+      // event.preventDefault();
     });
   });
 </script>
 <form action="post.php" method="POST">
-  <input id="time" value=""><br>
-  <input id="date" value=""><br>
+  <input type="text" id="time" value=""><br>
+  <input type="date" id="date" value=""><br>
   <input name="submit" type="button" value="Submit" class="submit">
 </form>
 <div id="data"></div>
 <span class="error" style="display:none"> Please Enter Valid Data</span>
 <span class="success" style="display:none"> Form Submitted Success</span>
 
-<?php
-
-print_r($_POST);
-if ($_POST['date']) {
-  $date = $_POST['date'];
-  $time = $_POST['time'];
-  echo '<h1>' . $date . '---' . $time . '</h1>';
-}
-else {
-
-}
-?>
